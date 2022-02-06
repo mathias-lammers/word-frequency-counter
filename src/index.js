@@ -1,7 +1,7 @@
 // Define imports and constants
 const express = require("express");
 const bodyParser = require("body-parser");
-var tools = require("./tools");
+const tools = require("./tools");
 const PORT = process.env.PORT || 3000;
 
 // Define app
