@@ -12,11 +12,24 @@ app.use(
   })
 );
 
-// Define POST endpoint
+// Define POST count endpoint
 app.post("/count", (req, res) => {
+  // Get unique words
   var text = req.body.text;
-  var words = UniqueWords(text);
-  res.send("ok");
+  var words = uniqueWords(text);
+
+  // Get number of occurrences
+  var occurrences = [];
+  words.forEach((word) => {
+    occurrences.push([word, wordCount(word, text)]);
+  });
+
+  // Sort by number of occurrences
+  occurrences.sort(function (first, second) {
+    return second[1] - first[1];
+  });
+
+  res.send(occurrences);
 });
 
 app.listen(PORT, () => {
@@ -29,7 +42,7 @@ app.listen(PORT, () => {
  * @param {String} text   The text to search in
  * @returns               Number of occurrences
  */
-function WordCount(word, text) {
+function wordCount(word, text) {
   var re = new RegExp(`${word}`, "gi");
   var count = text.match(re).length;
   return count;
@@ -40,7 +53,7 @@ function WordCount(word, text) {
  * @param {String} text   The text to get words from
  * @returns               Array of unique words
  */
-function UniqueWords(text) {
+function uniqueWords(text) {
   var words = text
     .replace(/[,.?!]/g, "")
     .split(" ")
