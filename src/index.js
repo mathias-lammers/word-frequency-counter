@@ -1,17 +1,31 @@
-// Define imports
+// Define imports and constants
 const express = require("express");
 const bodyParser = require("body-parser");
+const PORT = process.env.PORT || 3000;
 
 // Define app
-const app = express();
-app.use(bodyParser.json());
+var app = express();
+app.use(express.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 
-// Return placeholder message
-app.get("/", (req, res) => {
-  res.send("Hello world");
+// Define POST endpoint
+app.post("/count", (req, res) => {
+  var word = "banan"; // For testing purpose
+  var text = req.body.text;
+  var nOccurances = WordCount(word, text);
+  res.send(`${word} occurs ${nOccurances} times in text: ${text}`);
 });
 
-// Start server
-app.listen(3001, () => {
-  console.log("listening on port 3001");
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
 });
+
+function WordCount(word, text) {
+  var re = new RegExp(`\\b${word}\\b`, "g");
+  var count = (text.match(re) || []).length;
+  return count;
+}
