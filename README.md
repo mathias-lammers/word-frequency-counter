@@ -4,7 +4,7 @@ A node.js RESTful API that returns the 10 most frequent words of a text, as well
 
 ## Install
 
-Clone project to directory of your choice and install necessary dependencies:
+Clone project to directory of your choice and install necessary dependencies from the root directory:
 
 ```
 $ npm install
