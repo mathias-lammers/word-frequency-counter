@@ -1,0 +1,24 @@
+{
+  "name": "word-frequency-counter",
+  "version": "1.0.0",
+  "description": "A node.js RESTful API that returns the 10 most frequent words of a text, as well as the number of times they occur.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathias-lammers/word-frequency-counter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mathias-lammers/word-frequency-counter/issues"
+  },
+  "homepage": "https://github.com/mathias-lammers/word-frequency-counter#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2"
+  }
+}
