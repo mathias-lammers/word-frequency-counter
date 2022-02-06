@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 
 // Define app
 var app = express();
-app.use(express.json());
+app.use(bodyParser.text());
 app.use(
   bodyParser.urlencoded({
     extended: true,
@@ -15,7 +15,7 @@ app.use(
 // Define POST count endpoint
 app.post("/count", (req, res) => {
   // Get unique words
-  var text = req.body.text;
+  var text = req.body;
   var words = uniqueWords(text);
 
   // Get number of occurrences
