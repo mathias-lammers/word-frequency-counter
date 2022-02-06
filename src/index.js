@@ -24,10 +24,12 @@ app.post("/count", (req, res) => {
     occurrences.push([word, wordCount(word, text)]);
   });
 
-  // Sort by number of occurrences
-  occurrences.sort(function (first, second) {
-    return second[1] - first[1];
-  });
+  // Sort by number of occurrences and get top 10
+  occurrences
+    .sort(function (first, second) {
+      return second[1] - first[1];
+    })
+    .slice(0, 10);
 
   res.send(occurrences);
 });
